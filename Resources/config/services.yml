@@ -1,0 +1,7 @@
+parameters:
+#    dellaert_plesk_remote_control.example.class: Dellaert\PleskRemoteControlBundle\Example
+
+services:
+#    dellaert_plesk_remote_control.example:
+#        class: %dellaert_plesk_remote_control.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
