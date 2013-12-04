@@ -6,7 +6,7 @@ class PleskAPIUtility
 	public static function createSubscription($pleskhost,$pleskuser,$pleskpass,$hostname,$ip,$ftplogin,$ftppass)
 	{
         // setting up packet
-        $packet = '<?xml version="1.0" encoding="UTF-8"?>
+        $request = '<?xml version="1.0" encoding="UTF-8"?>
             <packet version="1.6.5.0">
                 <webspace>
                     <add>
@@ -33,13 +33,13 @@ class PleskAPIUtility
                 </webspace>
             </packet>';
 
-        return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$packet);
+        return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$request);
 	}
 
 	public static function createUser($pleskhost,$pleskuser,$pleskpass,$subscription,$userlogin,$userpass,$username)
 	{
 		// setting up packet
-        $packet = '<?xml version="1.0" encoding="UTF-8"?>
+        $request = '<?xml version="1.0" encoding="UTF-8"?>
             <packet version="1.6.5.0">
                 <user>
                     <add>
@@ -56,7 +56,25 @@ class PleskAPIUtility
                 </user>
             </packet>';
 
-        return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$packet);
+        return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$request);
+	}
+
+	public static function createDatabase($pleskhost,$pleskuser,$pleskpass,$subscription,$dbname,$dbtype,$dbserver)
+	{
+		// setting up packet
+        $request = '<?xml version="1.0" encoding="UTF-8"?>
+            <packet version="1.6.5.0">
+                <database>
+                    <add-db>
+                        <webspace-id>'.$subscription.'</webspace-id>
+                        <name>'.$dbname.'</name>
+                        <type>'.$dbtype.'</type>
+                        <db-server-id>'.$dbserver.'</db-server-id>
+                    </add-db>
+                </database>
+            </packet>';
+
+        return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$request);
 	}
 
 	private static function curlAction($pleskhost,$pleskuser,$pleskpass,$request)
