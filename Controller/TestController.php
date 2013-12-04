@@ -3,7 +3,7 @@ namespace Dellaert\PleskRemoteControlBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use Dellaert\PleskRemoteControlBundle\Utility\PleskAPIUtility.php;
+use Dellaert\PleskRemoteControlBundle\Utility\PleskAPIUtility;
 
 class TestController extends Controller 
 {
