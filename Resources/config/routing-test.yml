@@ -11,5 +11,5 @@ CreateDatabase:
     defaults: { _controller: DellaertPleskRemoteControlBundle:Test:createDatabase}
 
 CreateDatabaseUser:
-    pattern: /create-database/{pleskhost}/{pleskuser}/{pleskpass}/{dbid}/{username}/{userpass}
+    pattern: /create-databaseuser/{pleskhost}/{pleskuser}/{pleskpass}/{dbid}/{username}/{userpass}
     defaults: { _controller: DellaertPleskRemoteControlBundle:Test:createDatabaseUser}
