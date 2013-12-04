@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Subscription extends Controller {
     public function createAction($pleskhost,$pleskuser,$pleskpass,$hostname,$ip,$ftplogin,$ftppass){
-        $url = 'https://'.$pleskhost':8443/enterprise/control/agent.php;
+        $url = 'https://'.$pleskhost':8443/enterprise/control/agent.php';
 
         $headers = array(
             'HTTP_AUTH_LOGIN: '.$pleskuser),
