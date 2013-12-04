@@ -77,6 +77,23 @@ class PleskAPIUtility
         return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$request);
 	}
 
+    public static function createDatabaseUser($pleskhost,$pleskuser,$pleskpass,$dbid,$username,$userpass)
+    {
+        // setting up packet
+        $request = '<?xml version="1.0" encoding="UTF-8"?>
+            <packet version="1.6.5.0">
+                <database>
+                    <add-db-user>
+                        <db-id>'.$dbid.'</db-id>
+                        <login>'.$username.'</login>
+                        <password>'.$dbtype.'</password>
+                    </add-db-user>
+                </database>
+            </packet>';
+
+        return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$request);
+    }
+
 	private static function curlAction($pleskhost,$pleskuser,$pleskpass,$request)
 	{
 		$url = 'https://'.$pleskhost.':8443/enterprise/control/agent.php';

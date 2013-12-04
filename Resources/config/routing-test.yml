@@ -9,3 +9,7 @@ CreateUser:
 CreateDatabase:
     pattern: /create-database/{pleskhost}/{pleskuser}/{pleskpass}/{subscription}/{dbname}/{dbtype}/{dbserver}
     defaults: { _controller: DellaertPleskRemoteControlBundle:Test:createDatabase}
+
+CreateDatabaseUser:
+    pattern: /create-database/{pleskhost}/{pleskuser}/{pleskpass}/{dbid}/{username}/{userpass}
+    defaults: { _controller: DellaertPleskRemoteControlBundle:Test:createDatabaseUser}

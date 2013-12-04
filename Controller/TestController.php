@@ -27,4 +27,11 @@ class TestController extends Controller
 
         return $this->render('DellaertPleskRemoteControlBundle::debug.html.twig',array('result'=>$result));
     }
+
+    public function createDatabaseUserAction($pleskhost,$pleskuser,$pleskpass,$dbid,$username,$userpass)
+    {
+        $result = PleskAPIUtility::createDatabaseUser($pleskhost,$pleskuser,$pleskpass,$dbid,$username,$userpass);
+
+        return $this->render('DellaertPleskRemoteControlBundle::debug.html.twig',array('result'=>$result));
+    }
 }
