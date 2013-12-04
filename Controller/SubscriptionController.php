@@ -6,11 +6,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Subscription extends Controller {
     public function createAction($pleskhost,$pleskuser,$pleskpass,$hostname,$ip,$ftplogin,$ftppass){
-        $url = $this->container->getParameter('dellaert_plesk_remote_control.baseurl');
+        $url = 'https://'.$pleskhost':8443/enterprise/control/agent.php';
 
         $headers = array(
-            'HTTP_AUTH_LOGIN: '.$this->container->getParameter('dellaert_plesk_remote_control.apiuser'),
-            'HTTP_AUTH_PASSWD: '.$this->container->getParameter('dellaert_plesk_remote_control.apipassword'),
+            'HTTP_AUTH_LOGIN: '.$pleskuser),
+            'HTTP_AUTH_PASSWD: '.$pleskpass),
             'Content-Type: text/xml'
         );
 
