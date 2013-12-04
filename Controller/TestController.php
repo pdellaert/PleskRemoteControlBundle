@@ -11,6 +11,6 @@ class TestController extends Controller
     {
         $result = PleskAPIUtility::createSubscription($pleskhost,$pleskuser,$pleskpass,$hostname,$ip,$ftplogin,$ftppass);
 
-        return $this->render('DellaertPleskRemoteControlBundle::debug.html.twig',array('packet'=>$result['packet'],'result'=>$result['reply']));
+        return $this->render('DellaertPleskRemoteControlBundle::debug.html.twig',array('packet'=>$result['packet'],'result'=>$result['result']));
     }
 }

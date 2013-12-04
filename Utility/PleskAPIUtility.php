@@ -62,11 +62,11 @@ class PleskAPIUtility
         curl_setopt($curl, CURLOPT_POSTFIELDS, $packet);
 
         // perform the CURL request and return the result 
-        $reply = curl_exec($curl); 
+        $result = curl_exec($curl); 
          
         // close the CURL session
         curl_close($curl);
 
-        return array('packet'=>$packet,'reply'=>$reply);
+        return array('packet'=>$packet,'result'=>$result);
 	}
 }
