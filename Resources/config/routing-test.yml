@@ -5,7 +5,6 @@ CreateSubscription:
 CreateUser:
     pattern: /create-user/{pleskhost}/{pleskuser}/{pleskpass}/{subscription}/{userlogin}/{userpass}/{username}
     defaults: { _controller: DellaertPleskRemoteControlBundle:Test:createUser}
-    $dbname,$dbtype,$dbserver
 
 CreateDatabase:
     pattern: /create-database/{pleskhost}/{pleskuser}/{pleskpass}/{subscription}/{dbname}/{dbtype}/{dbserver}
