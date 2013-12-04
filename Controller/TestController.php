@@ -9,8 +9,8 @@ class TestController extends Controller
 {
     public function createSubscriptionAction($pleskhost,$pleskuser,$pleskpass,$hostname,$ip,$ftplogin,$ftppass)
     {
-        $data = PleskAPIUtility::createSubscription($pleskhost,$pleskuser,$pleskpass,$hostname,$ip,$ftplogin,$ftppass);
+        $result = PleskAPIUtility::createSubscription($pleskhost,$pleskuser,$pleskpass,$hostname,$ip,$ftplogin,$ftppass);
 
-        return $this->render('DellaertPleskRemoteControlBundle::debug.html.twig',array('packet'=>$packet,'data'=>$data));
+        return $this->render('DellaertPleskRemoteControlBundle::debug.html.twig',array('packet'=>$result['packet'],'result'=>$result['reply']));
     }
 }
