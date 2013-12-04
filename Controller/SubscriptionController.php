@@ -16,15 +16,15 @@ class SubscriptionController extends Controller {
 
         $curl = curl_init();
         // do not check the name of SSL certificate of the remote server 
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
         // do not check up the remote server certificate
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         // pass in the header elements
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         // pass in the url of the target server
-        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_URL, $url);
         // tell CURL to return the result rather than to load it to the browser
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
         // setting up packet
         $packet = '<?xml version="1.0" encoding="UTF-8"?>
@@ -55,10 +55,10 @@ class SubscriptionController extends Controller {
             </packet>';
 
         // perform the CURL request and return the result 
-        $data = curl_exec($ch); 
+        $data = curl_exec($curl); 
          
         // close the CURL session
-        curl_close($ch); 
+        curl_close($curl); 
 
         $response = new Response($data);
         $response->headers->set('Content-Type', 'text/xml');
