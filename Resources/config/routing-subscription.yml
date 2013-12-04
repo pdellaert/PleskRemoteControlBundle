@@ -1,0 +1,3 @@
+SubscriptionCreate:
+    pattern: /create/{hostname}/{ip}/{ftplogin}/{ftppass}
+    defaults: { _controller: DellaertPleskRemoteControlBundle:Subscription:create}
