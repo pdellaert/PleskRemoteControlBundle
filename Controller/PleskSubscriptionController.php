@@ -62,6 +62,6 @@ class PleskSubscriptionController extends Controller
         // close the CURL session
         curl_close($curl); 
 
-        return $this->render('DellaertPleskRemoteControlBundle:debug.html.twig',array('data'=>$data));
+        return $this->render('DellaertPleskRemoteControlBundle::debug.html.twig',array('data'=>$data));
     }
 }
