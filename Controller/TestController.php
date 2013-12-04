@@ -13,7 +13,7 @@ class TestController extends Controller
 
         return $this->render('DellaertPleskRemoteControlBundle::debug.html.twig',array('result'=>$result));
     }
-{
+
     public function createUserAction($pleskhost,$pleskuser,$pleskpass,$subscription,$userlogin,$userpass,$username)
     {
         $result = PleskAPIUtility::createUser($pleskhost,$pleskuser,$pleskpass,$subscription,$userlogin,$userpass,$username);
