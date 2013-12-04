@@ -1,3 +1,7 @@
 SubscriptionCreate:
     pattern: /create-subscription/{pleskhost}/{pleskuser}/{pleskpass}/{hostname}/{ip}/{ftplogin}/{ftppass}
     defaults: { _controller: DellaertPleskRemoteControlBundle:Test:createSubscription}
+
+UserCreate:
+    pattern: /create-user/{pleskhost}/{pleskuser}/{pleskpass}/{subscription}/{userlogin}/{userpass}/{username}
+    defaults: { _controller: DellaertPleskRemoteControlBundle:Test:createUser}

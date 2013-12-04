@@ -36,7 +36,30 @@ class PleskAPIUtility
         return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$packet);
 	}
 
-	private static function curlAction($pleskhost,$pleskuser,$pleskpass,$packet)
+	public static function createUser($pleskhost,$pleskuser,$pleskpass,$subscription,$userlogin,$userpass,$username)
+	{
+		// setting up packet
+        $packet = '<?xml version="1.0" encoding="UTF-8"?>
+            <packet version="1.6.5.0">
+                <user>
+                    <add>
+                        <gen-info>
+                        	<login>'.$userlogin.'</login>
+                        	<passwd>'.$userpass.'</passwd>
+                            <name>'.$username.'</name>
+                            <subscription-domain-id>'.$subscription.'</subscription-domain-id>
+                        </gen-info>
+                        <roles>
+                        	<name>Admin</name>
+                        </roles>
+                    </add>
+                </user>
+            </packet>';
+
+        return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$packet);
+	}
+
+	private static function curlAction($pleskhost,$pleskuser,$pleskpass,$request)
 	{
 		$url = 'https://'.$pleskhost.':8443/enterprise/control/agent.php';
 
@@ -59,7 +82,7 @@ class PleskAPIUtility
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
         // pass in the packet to deliver
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $packet);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $request);
 
         // perform the CURL request and return the result 
         $result = curl_exec($curl); 
@@ -67,6 +90,6 @@ class PleskAPIUtility
         // close the CURL session
         curl_close($curl);
 
-        return array('packet'=>$packet,'result'=>$result);
+        return array('request'=>$request,'result'=>$result);
 	}
 }

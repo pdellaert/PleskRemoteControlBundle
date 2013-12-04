@@ -11,6 +11,13 @@ class TestController extends Controller
     {
         $result = PleskAPIUtility::createSubscription($pleskhost,$pleskuser,$pleskpass,$hostname,$ip,$ftplogin,$ftppass);
 
-        return $this->render('DellaertPleskRemoteControlBundle::debug.html.twig',array('packet'=>$result['packet'],'result'=>$result['result']));
+        return $this->render('DellaertPleskRemoteControlBundle::debug.html.twig',array('result'=>$result));
+    }
+{
+    public function createUserAction($pleskhost,$pleskuser,$pleskpass,$subscription,$userlogin,$userpass,$username)
+    {
+        $result = PleskAPIUtility::createUser($pleskhost,$pleskuser,$pleskpass,$subscription,$userlogin,$userpass,$username);
+
+        return $this->render('DellaertPleskRemoteControlBundle::debug.html.twig',array('result'=>$result));
     }
 }
