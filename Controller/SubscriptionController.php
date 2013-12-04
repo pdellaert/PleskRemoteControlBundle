@@ -5,7 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
 class Subscription extends Controller {
-    public function createAction($hostname,$ip,$ftplogin,$ftppass){
+    public function createAction($pleskhost,$pleskuser,$pleskpass,$hostname,$ip,$ftplogin,$ftppass){
         $url = $this->container->getParameter('dellaert_plesk_remote_control.baseurl');
 
         $headers = array(

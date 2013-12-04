@@ -1,4 +1,0 @@
-parameters:
-    dellaert_plesk_remote_control.baseurl: https://plesk-url:8443/enterprise/control/agent.php
-    dellaert_plesk_remote_control.apiuser: username
-    dellaert_plesk_remote_control.apipassword: password
