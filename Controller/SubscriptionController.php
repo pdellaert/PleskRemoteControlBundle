@@ -9,9 +9,9 @@ class Subscription extends Controller {
         $url = $this->container->getParameter('dellaert_plesk_remote_control.baseurl');
 
         $headers = array(
-            ‘HTTP_AUTH_LOGIN: ’.$this->container->getParameter('dellaert_plesk_remote_control.apiuser'),
-            ‘HTTP_AUTH_PASSWD: ’.$this->container->getParameter('dellaert_plesk_remote_control.apiuser'),
-            ‘Content-Type: text/xml’
+            'HTTP_AUTH_LOGIN: '.$this->container->getParameter('dellaert_plesk_remote_control.apiuser'),
+            'HTTP_AUTH_PASSWD: '.$this->container->getParameter('dellaert_plesk_remote_control.apipassword'),
+            'Content-Type: text/xml'
         );
 
         $curl = curl_init();
