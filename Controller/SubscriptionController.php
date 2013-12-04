@@ -9,8 +9,8 @@ class Subscription extends Controller {
         $url = 'https://'.$pleskhost.':8443/enterprise/control/agent.php';
 
         $headers = array(
-            'HTTP_AUTH_LOGIN: '.$pleskuser),
-            'HTTP_AUTH_PASSWD: '.$pleskpass),
+            'HTTP_AUTH_LOGIN: '.$pleskuser,
+            'HTTP_AUTH_PASSWD: '.$pleskpass,
             'Content-Type: text/xml'
         );
 
