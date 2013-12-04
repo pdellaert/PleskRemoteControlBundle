@@ -56,12 +56,15 @@ class PleskSubscriptionController extends Controller
                 </webspace>
             </packet>';
 
+        // pass in the packet to deliver
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $packet);
+
         // perform the CURL request and return the result 
         $data = curl_exec($curl); 
          
         // close the CURL session
         curl_close($curl); 
 
-        return $this->render('DellaertPleskRemoteControlBundle::debug.html.twig',array('data'=>$data));
+        return $this->render('DellaertPleskRemoteControlBundle::debug.html.twig',array('packet'=>$packet,'data'=>$data));
     }
 }
