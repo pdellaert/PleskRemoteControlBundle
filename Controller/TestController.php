@@ -5,9 +5,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Dellaert\PleskRemoteControlBundle\Utility\PleskAPIUtility.php;
 
-class SubscriptionController extends Controller 
+class TestController extends Controller 
 {
-    public function createAction($pleskhost,$pleskuser,$pleskpass,$hostname,$ip,$ftplogin,$ftppass)
+    public function createSubscriptionAction($pleskhost,$pleskuser,$pleskpass,$hostname,$ip,$ftplogin,$ftppass)
     {
         $data = PleskAPIUtility::createSubscription($pleskhost,$pleskuser,$pleskpass,$hostname,$ip,$ftplogin,$ftppass);
 

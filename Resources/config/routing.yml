@@ -1,3 +1,3 @@
 Subscription:
-    resource: "@DellaertPleskRemoteControlBundle/Resources/config/routing-subscription.yml"
-    prefix:   /subscription
+    resource: "@DellaertPleskRemoteControlBundle/Resources/config/routing-test.yml"
+    prefix:   /test
