@@ -60,8 +60,8 @@ class SubscriptionController extends Controller {
         // close the CURL session
         curl_close($ch); 
 
-        $response = new Response(json_encode($data));
-        $response->headers->set('Content-Type', 'application/json');
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'text/xml');
         return $response;
     }
 }
