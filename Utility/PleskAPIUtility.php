@@ -67,6 +67,6 @@ class PleskAPIUtility
         // close the CURL session
         curl_close($curl);
 
-        return array($packet,$data);
+        return array('packet'=>$packet,'reply'=>$reply);
 	}
 }
