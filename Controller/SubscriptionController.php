@@ -60,8 +60,6 @@ class SubscriptionController extends Controller {
         // close the CURL session
         curl_close($curl); 
 
-        $response = new Response($data);
-        $response->headers->set('Content-Type', 'text/xml');
-        return $response;
+        return $this->render('DellaertPleskRemoteControlBundle:debug.html.twig',array('data'=>$data));
     }
 }
