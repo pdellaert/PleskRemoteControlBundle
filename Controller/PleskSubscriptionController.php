@@ -1,11 +1,13 @@
 <?php
-namespace Dellaert\PleskRemoteControl\Controller;
+namespace Dellaert\PleskRemoteControlBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class PleskSubscriptionController extends Controller {
-    public function createAction($pleskhost,$pleskuser,$pleskpass,$hostname,$ip,$ftplogin,$ftppass){
+class PleskSubscriptionController extends Controller 
+{
+    public function createAction($pleskhost,$pleskuser,$pleskpass,$hostname,$ip,$ftplogin,$ftppass)
+    {
         $url = 'https://'.$pleskhost.':8443/enterprise/control/agent.php';
 
         $headers = array(
