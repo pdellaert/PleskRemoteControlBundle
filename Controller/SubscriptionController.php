@@ -26,6 +26,7 @@ class Subscription extends Controller {
         // tell CURL to return the result rather than to load it to the browser
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
+        // setting up packet
         $packet = '<?xml version="1.0" encoding="UTF-8"?>
             <packet version="1.6.5.0">
                 <webspace>
