@@ -86,7 +86,7 @@ class PleskAPIUtility
                     <add-db-user>
                         <db-id>'.$dbid.'</db-id>
                         <login>'.$username.'</login>
-                        <password>'.$dbtype.'</password>
+                        <password>'.$userpass.'</password>
                     </add-db-user>
                 </database>
             </packet>';
