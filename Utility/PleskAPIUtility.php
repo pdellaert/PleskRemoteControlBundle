@@ -87,7 +87,7 @@ class PleskAPIUtility
                             <guid>'.$userId.'</guid>
                         </filter>
                     </del>
-                </database>
+                </user>
             </packet>';
 
         return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$request);
