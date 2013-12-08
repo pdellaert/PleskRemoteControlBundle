@@ -3,8 +3,8 @@ namespace Dellaert\PleskRemoteControlBundle\Utility;
 
 class PleskAPIUtility 
 {
-	public static function createSubscription($pleskhost,$pleskuser,$pleskpass,$hostname,$ip,$ftplogin,$ftppass)
-	{
+    public static function createSubscription($pleskhost,$pleskuser,$pleskpass,$hostname,$ip,$ftplogin,$ftppass)
+    {
         // setting up packet
         $request = '<?xml version="1.0" encoding="UTF-8"?>
             <packet version="1.6.5.0">
@@ -34,34 +34,68 @@ class PleskAPIUtility
             </packet>';
 
         return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$request);
-	}
+    }
 
-	public static function createUser($pleskhost,$pleskuser,$pleskpass,$subscription,$userlogin,$userpass,$username)
-	{
-		// setting up packet
+    public static function deleteSubscription($pleskhost,$pleskuser,$pleskpass,$subscriptionId)
+    {
+        // setting up packet
+        $request = '<?xml version="1.0" encoding="UTF-8"?>
+            <packet version="1.6.5.0">
+                <webspace>
+                    <del>
+                        <filter>
+                            <id>'.$subscriptionId.'</id>
+                        </filter>
+                    </del>
+                </webspace>
+            </packet>';
+
+        return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$request);
+    }
+
+    public static function createUser($pleskhost,$pleskuser,$pleskpass,$subscription,$userlogin,$userpass,$username)
+    {
+        // setting up packet
         $request = '<?xml version="1.0" encoding="UTF-8"?>
             <packet version="1.6.5.0">
                 <user>
                     <add>
                         <gen-info>
-                        	<login>'.$userlogin.'</login>
-                        	<passwd>'.$userpass.'</passwd>
+                            <login>'.$userlogin.'</login>
+                            <passwd>'.$userpass.'</passwd>
                             <name>'.$username.'</name>
                             <subscription-domain-id>'.$subscription.'</subscription-domain-id>
                         </gen-info>
                         <roles>
-                        	<name>Admin</name>
+                            <name>Admin</name>
                         </roles>
                     </add>
                 </user>
             </packet>';
 
         return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$request);
-	}
+    }
 
-	public static function createDatabase($pleskhost,$pleskuser,$pleskpass,$subscription,$dbname,$dbtype,$dbserver)
-	{
-		// setting up packet
+    public static function deleteUser($pleskhost,$pleskuser,$pleskpass,$userId)
+    {
+        // setting up packet
+        $request = '<?xml version="1.0" encoding="UTF-8"?>
+            <packet version="1.6.5.0">
+                <user>
+                    <del>
+                        <filter>
+                            <guid>'.$userId.'</guid>
+                        </filter>
+                    </del>
+                </database>
+            </packet>';
+
+        return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$request);
+    }
+
+    public static function createDatabase($pleskhost,$pleskuser,$pleskpass,$subscription,$dbname,$dbtype,$dbserver)
+    {
+        // setting up packet
         $request = '<?xml version="1.0" encoding="UTF-8"?>
             <packet version="1.6.5.0">
                 <database>
@@ -75,7 +109,24 @@ class PleskAPIUtility
             </packet>';
 
         return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$request);
-	}
+    }
+
+    public static function deleteDatabase($pleskhost,$pleskuser,$pleskpass,$databaseId)
+    {
+        // setting up packet
+        $request = '<?xml version="1.0" encoding="UTF-8"?>
+            <packet version="1.6.5.0">
+                <database>
+                    <del-db>
+                        <filter>
+                            <id>'.$databaseId.'</id>
+                        </filter>
+                    </del-db>
+                </database>
+            </packet>';
+
+        return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$request);
+    }
 
     public static function createDatabaseUser($pleskhost,$pleskuser,$pleskpass,$dbid,$username,$userpass)
     {
@@ -94,9 +145,26 @@ class PleskAPIUtility
         return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$request);
     }
 
-	private static function curlAction($pleskhost,$pleskuser,$pleskpass,$request)
-	{
-		$url = 'https://'.$pleskhost.':8443/enterprise/control/agent.php';
+    public static function deleteDatabaseUser($pleskhost,$pleskuser,$pleskpass,$dbUserId)
+    {
+        // setting up packet
+        $request = '<?xml version="1.0" encoding="UTF-8"?>
+            <packet version="1.6.5.0">
+                <database>
+                    <del-db-user>
+                        <filter>
+                            <id>'.$dbUserId.'</id>
+                        </filter>
+                    </del-db-user>
+                </database>
+            </packet>';
+
+        return PleskAPIUtility::curlAction($pleskhost,$pleskuser,$pleskpass,$request);
+    }
+
+    private static function curlAction($pleskhost,$pleskuser,$pleskpass,$request)
+    {
+        $url = 'https://'.$pleskhost.':8443/enterprise/control/agent.php';
 
         $headers = array(
             'HTTP_AUTH_LOGIN: '.$pleskuser,
@@ -126,5 +194,5 @@ class PleskAPIUtility
         curl_close($curl);
 
         return array('request'=>$request,'result'=>$result);
-	}
+    }
 }
